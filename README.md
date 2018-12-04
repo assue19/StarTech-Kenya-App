@@ -20,16 +20,15 @@ ReactNative Base App
 (Location Tracking)[https://dev.to/vikrantnegi/react-native-location-tracking-32o7]
 
 
-        // Add a for Loop throught the array and add all the markers 
-        // for (var marker = this.markerDataArray.length; i++) {
-        //     <MapView.Marker
-        //         coordinate={{
-        //           latitude: marker.latitude, 
-        //           longitude: marker.latitude
-        //         }}>
-        //     <View style={styles.radius}>
-        //       <View style={styles.marker}/>
-        //     </View>
+         Add a for Loop throught the array and add all the markers 
+         for (var marker = this.markerDataArray.length; i++) {
+             <MapView.Marker
+                 coordinate={{
+                  latitude: marker.latitude, 
+                   longitude: marker.latitude
+             <View style={styles.radius}>
+             <View style={styles.marker}/>    
+          </View>
          
-        //   </MapView.Marker>
-        // }
+          </MapView.Marker>
+        }

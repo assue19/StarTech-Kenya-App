@@ -26,7 +26,7 @@ import { StackNavigator } from "react-navigation";
 class Home extends Component<{}> {
   static navigationOptions = {
     headerStyle: {
-      backgroundColor: "#16a085",
+      backgroundColor: "blue",
       elevation: null
     },
     header: null
@@ -34,7 +34,7 @@ class Home extends Component<{}> {
   render() {
     return (
       <View style={styles.container}>
-        <StatusBar barStyle="light-content" backgroundColor="#16a085" />
+        <StatusBar barStyle="light-content" backgroundColor="blue" />
         <Login navigation={this.props.navigation} />
       </View>
     );

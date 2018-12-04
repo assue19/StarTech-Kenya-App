@@ -98,12 +98,12 @@ export default class Register extends Component {
           />
 
           <TextInput
-            value={this.state.password}
+            value={this.state.password_confirmation}
             onChangeText={password_confirmation => this.setState({ password_confirmation })}
             style={styles.input}
             placeholder="Confirm Password"
             secureTextEntry={true}
-            placeholderTextColor="rgba(255,255,255,0.7)"
+            placeholderTextColor="rgba(255,255,255,0.7)"  
             returnKeyType="go"
             secureTextEntry
             ref={input => (this.passwordInput = input)}
@@ -148,16 +148,18 @@ const styles = StyleSheet.create({
     marginBottom: 10,
     backgroundColor: "rgba(255,255,255,0.2)",
     color: "#fff",
-    paddingHorizontal: 10
+    paddingHorizontal: 10,
+    borderRadius:10
   },
   button: {
     height: 55,
-    backgroundColor: "rgba(255,255,255,0.2)",
+    // backgroundColor: "rgba(255,255,255,0.2)",
     alignSelf: "stretch",
     marginTop: 10,
     justifyContent: "center",
     paddingVertical: 15,
-    marginBottom: 10
+    marginBottom: 10,
+    borderRadius:10
   },
   buttonText: {
     flex: 1,

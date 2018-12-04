@@ -31,7 +31,7 @@ export default class Login extends Component {
   }
   static navigationOptions = {
     headerStyle: {
-      backgroundColor: "#16a085",
+      backgroundColor: "white",
       elevation: null
     },
     headerTitleStyle: {
@@ -50,7 +50,7 @@ export default class Login extends Component {
       loading: true
     });
 
-    fetch("https://68c0ff0a.ngrok.io/login", {
+    fetch("http://login.mysite.com/redirect", {
       method: "POST",
       headers: {
         Accept: "application/json",
@@ -143,9 +143,9 @@ export default class Login extends Component {
               <Text
                 style={styles.buttonText}
                 
-                title="Sign up"
+                title="Create Account"
               >
-                Sign up
+                Create Account
               </Text>
             </TouchableOpacity>
 
@@ -154,9 +154,9 @@ export default class Login extends Component {
               <Text
                 style={styles.buttonText}
               
-                title="Forget Password"
+                title="Forgot Password"
               >
-                Forget Password
+                Forgot Password
               </Text>
             </TouchableOpacity>
         </View>

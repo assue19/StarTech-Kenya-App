@@ -5,48 +5,52 @@ import MapView, { PROVIDER_GOOGLE } from "react-native-maps";
 
 export default class LocationScreen extends Component {
 
-  getLocations = () => {
-
-    this.setState({
-      loading: true
-    });
-
-    fetch("https://68c0ff0a.ngrok.io/location", {
-      method: "GET",
-    })
-      .then(response => response.json())
-      .then(responseJson => {
-        // If server response message same as Data Matched
-        if (responseJson.statusCode === 200) {
-          console.log(responseJson)
-          this.setState({
-            loading: false,
-            markerDataArray: responseJson.result
-          })
-        } else {
-          Alert.alert(responseJson.message);
-        }
-      })
-      .catch(error => {
-        this.setState({ error, loading: false });
-        console.error(error);
-      });
-  };
-
   state = {
-    markerDataArray: null,
-    loading: false,
-    mapRegion: { latitude: -1.29883815, longitude: 36.79086888735681, latitudeDelta: 0.0922, longitudeDelta: 0.0421 },
+   
     locationResult: null,
-    location: {coords: { latitude: -1.29883815, longitude: 36.79086888735681}},
+    loading:false,
+    data:[],
+    mapRegion: {
+      latitude: -1.29883815,
+      longitude: 36.79086888735681,
+      latitudeDelta: 0.0922,
+      longitudeDelta: 0.0421
+    },
+    locationResult: null,
+    location: {
+      coords: { latitude: -1.29883815, longitude: 36.79086888735681 }
+    }
   };
+    
 
   componentDidMount() {
     this._getLocationAsync();
+    this.makeRemoteRequest();
   }
+  
 
   _handleMapRegionChange = mapRegion => {
     this.setState({ mapRegion });
+  };
+
+  makeRemoteRequest = () => {
+    const url = `https://conflicted-app-done-with-db--judymueni.repl.co/devices/location/all`;
+    this.setState({
+      loading: true
+    });
+    fetch(url)
+      .then(res => res.json())
+      .then(res => {
+        this.setState({ 
+          data: res,
+          error: null,
+          loading: false,
+          refreshing: false
+        });
+      })
+      .catch(error => {
+        this.setState({ error, loading: false });
+      });
   };
 
   _getLocationAsync = async () => {
@@ -73,8 +77,21 @@ export default class LocationScreen extends Component {
             longitude: this.state.location.coords.longitude, 
             latitudeDelta: 0.0922, longitudeDelta: 0.0421 
           }}
-        >
+         // onRegionChange={this._handleMapRegionChange}
 
+         
+        >
+        {this.state.data.map(marker => (
+          <MapView.Marker 
+            coordinate={
+              {
+            latitude: parseFloat(marker.lat), 
+            longitude: parseFloat(marker.longt)
+          }
+            }
+            title={"Nduthi"}
+          />
+        ))} 
         <MapView.Marker
           coordinate={{
             latitude: -1.29883815, 
